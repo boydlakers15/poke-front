@@ -1,0 +1,148 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+  }
+
+  
+  
+  .header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .title {
+    font-size: 32px;
+    color: #4f4f4f;
+  }
+  
+  .selectText {
+    font-size: 28px;
+    font-weight: bold;
+    color: #4f4f4f;
+    margin-top: 30px;
+  }
+  
+  .selectContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 30px;
+  }
+  
+  .selectButton {
+    width: 100%;
+    text-align: left;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+    transition: all 0.2s ease-in-out;
+    background-color: #f8f8ff;
+    color: #4f4f4f;
+  }
+  
+  .selectButton:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .selectPokemon {
+    display: flex;
+    align-items: center;
+  }
+  
+  .selectImage {
+    width: 50px;
+    height: 50px;
+    margin-right: 16px;
+  }
+  
+  .selectName {
+    font-size: 24px;
+  }
+  
+  
+  .pokemon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+    border-radius: 4px;
+    
+  }
+  
+  .pokemonImage {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+  }
+  
+  .pokemonName {
+    font-size: 16px;
+    color: #4F4F4F;
+    margin-top: 8px;
+    text-align: center;
+  }
+  
+  .pokemonCard {
+    margin-right: 16px;
+    margin-bottom: 16px;
+    padding: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .pokemonCard:hover {
+    transform: scale(1.05);
+  }
+  
+  .pokemonName {
+    font-size: 24px;
+    color: #4f4f4f;
+  }
+  
+  .pokemonType {
+    font-size: 16px;
+    color: #555;
+    margin-right: 8px;
+  }
+  
+  .pokemonImage {
+    height: 100px;
+    width: 100px;
+    margin-bottom: 8px;
+  }
+  @media (max-width: 768px) {
+    .title {
+      font-size: 24px;
+    }
+    
+    .selectText {
+      font-size: 24px;
+    }
+    
+    .selectName {
+      font-size: 20px;
+    }
+    
+    .pokemonImage {
+      height: 80px;
+      width: 80px;
+    }
+    
+    .pokemonName {
+      font-size: 14px;
+    }
+    
+    .pokemonType {
+      font-size: 12px;
+      margin-right: 4px;
+    }
+  }

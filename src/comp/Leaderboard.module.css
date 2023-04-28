@@ -1,0 +1,29 @@
+.leaderboard-container {
+    margin: 50px auto;
+    max-width: 800px;
+    text-align: center;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  .pokemon-cell {
+    display: flex;
+    align-items: center;
+  }
+  
+  .pokemon-cell img {
+    height: 50px;
+    margin-right: 10px;
+  }
