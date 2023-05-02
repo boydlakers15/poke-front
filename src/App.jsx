@@ -6,6 +6,7 @@ import Fight from './comp/Fight';
 import Home from './comp/Home';
 import Leaderboard from './comp/leaderboard';
 
+
 function App() {
   return (
     <Router>

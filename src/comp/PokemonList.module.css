@@ -30,4 +30,32 @@
   a:hover {
     color: #f00;
   }
+  .selectContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .pokemonButton {
+    margin: 10px;
+  }
+  
+  .link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+  }
+  
+  .pokemonImage {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .pokemonName {
+    margin-top: 5px;
+    font-weight: bold;
+    text-transform: capitalize;
+  }
   

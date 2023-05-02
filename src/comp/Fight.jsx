@@ -169,14 +169,65 @@ import Leaderboard from './leaderboard';
 
 const useStyles = makeStyles({
   card: {
-    minWidth: 275,
+    width: 350,
+    backgroundColor: '#f2f2f2',
+    borderRadius: 10,
+    boxShadow: '0px 3px 10px rgba(0, 0, 0, 0.2)',
+    textAlign: 'center',
+    margin: '20px auto',
+    backgroundImage: "url('https://i.pinimg.com/originals/5d/2b/87/5d2b8754ace6e6311316c6a2950ebd8b.png')",
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
   },
-  
   title: {
-    fontSize: 14,
+    fontSize: 20,
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
+    margin: '10px 0',
+    color: '#c80000',
+    textShadow: '2px 2px #fff',
+    paddingTop: '8px'
+  },
+  opptitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
+    color: '#c80000',
+    textShadow: '2px 2px #fff',
+    
+  },
+  wintitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
+    margin: '10px 0',
+    color: '#c80000',
+    textShadow: '2px 2px #fff',
+    paddingTop: '8px'
   },
   pos: {
     marginBottom: 12,
+    textTransform: 'capitalize',
+    color: '#333',
+    fontWeight: 'bold',
+    
+  },
+  imageContainer: {
+    position: 'relative',
+    width: '100%',
+    paddingTop: '100%',
+    overflow: 'hidden',
+  },
+  image: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+    width: '100%',
+    height: '100%',
+    objectFit: 'contain',
   },
 });
 
@@ -187,7 +238,8 @@ const Pokefight = () => {
   const [opponentPokemon, setOpponentPokemon] = useState(null);
   const [winner, setWinner] = useState(null);
   const [pictureUrl, setPictureUrl] = useState('');
-  const [leaderboard, setLeaderboard] = useState([]);
+  const [winnerPictureUrl, setWinnerPictureUrl] = useState('');
+
 
   useEffect(() => {
     fetch('http://localhost:3000/pokemon')
@@ -205,19 +257,37 @@ const Pokefight = () => {
     }
   }, [playerPokemon]);
 
+  useEffect(() => {
+    if (winner) {
+      fetch(`https://pokeapi.co/api/v2/pokemon/${winner.name.english.toLowerCase()}`)
+        .then(response => response.json())
+        .then(data => setWinnerPictureUrl(data.sprites.front_default))
+    }
+  }, [winner]);
+  
+
   const handleSelectPokemon = (pokemon) => {
     setPlayerPokemon(pokemon);
     setOpponentPokemon(pokemonList[Math.floor(Math.random() * pokemonList.length)]);
     setWinner(null);
   }
 
-  const calculateTotalStats = (pokemon) => {
-    let totalStats = 0;
-    for (let stat in pokemon.base) {
-      totalStats += pokemon.base[stat];
-    }
-    return totalStats;
-  }
+  // const calculateTotalStats = (pokemon, isWinner) => {
+  //   let totalStats = 0;
+  //   for (let stat in pokemon.base) {
+  //     if (isWinner) {
+  //       if (stat === 'HP') {
+  //         totalStats += pokemon.base[stat] * 2;
+  //       } else {
+  //         totalStats += pokemon.base[stat];
+  //       }
+  //     } else {
+  //       totalStats += pokemon.base[stat];
+  //     }
+  //   }
+  //   return totalStats;
+  // }
+  
 
   // const saveLeaderboard = (game) => {
   //   fetch('/leaderboard', {
@@ -290,30 +360,42 @@ const Pokefight = () => {
     }
   };
   
+  const calculateTotalStats = (pokemon) => {
+    let totalStats = 0;
+    for (let stat in pokemon.base) {
+      totalStats += pokemon.base[stat];
+    }
+    return totalStats;
+  }
   
-
+  const calculateWinnerTotalStats = () => {
+    if (winner === null || winner === 'tie') {
+      return null;
+    } else {
+      return calculateTotalStats(winner);
+    }
+  }
   
-  
-  
-  
-
   return (
     <div className={styles.container}>
+      <div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Pok%C3%A9mon_TCG_Online_Logo.png" alt="Pokemon TCG Online Logo" className="logo" />
+      </div>
       <Leaderboard/>
       <div>
+      <br />
       <Box  display="flex" alignItems="center">
           <img src="https://server.emulator.games/images/gameboy-color/pokemon-blue-version-ua.jpg" alt="Pokemon Blue Version" width="350" height="350" />
       </Box>
-      
     </div>
-    <br />
       {playerPokemon && opponentPokemon && (
         <div className={styles.pokemonContainer}>
-            <Card className={classes.card}>
-                <CardContent>
+            <Card className={classes.card} style={{ backgroundImage: "url('https://i.pinimg.com/236x/fc/c3/68/fcc3688f92afd5e3390edf3f7cd3ab73.jpg')", backgroundSize: "cover" }}>
                 <Typography className={classes.title} color="textSecondary" gutterBottom>
                     Your Pokemon
                 </Typography>
+                <CardContent>
+                
                 <Typography variant="h5" component="h2">
                     {playerPokemon.name.english}
                 </Typography>
@@ -321,23 +403,22 @@ const Pokefight = () => {
                 <Typography className={classes.pos} color="textSecondary">
                     {playerPokemon.type.join(', ')}
                 </Typography>
-                <Typography variant="body2" component="p">
+                <Typography variant="body2" component="p" style={{ paddingTop: '48px',  fontWeight: 'bold' }}>
                     HP: {playerPokemon.base.HP} <br />
                     Attack: {playerPokemon.base.Attack} <br />
                     Defense: {playerPokemon.base.Defense} <br />
                     Speed: {playerPokemon.base.Speed} <br />
-                    <br />
+                    <br /><br /><br /><br /><br />
                 </Typography>
                 </CardContent>
-            </Card>
-            <br />
-            
-            <Card className={classes.card}>
+            </Card> 
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <Card style={{ backgroundImage: "url('https://i.pinimg.com/236x/fc/c3/68/fcc3688f92afd5e3390edf3f7cd3ab73.jpg')", backgroundSize: "cover" }} className={classes.card}>
                 <CardContent>
-                
-                <Typography className={classes.title} color="textSecondary" gutterBottom>
+                <Typography  className={classes.opptitle} color="textSecondary" gutterBottom>
                     Opponent's Pokemon
                 </Typography>
+                <br />
                 <Typography variant="h5" component="h2">
                     {opponentPokemon.name.english}
                 </Typography>
@@ -345,51 +426,53 @@ const Pokefight = () => {
                 <Typography className={classes.pos} color="textSecondary">
                     {opponentPokemon.type.join(', ')}
                 </Typography>
-                <Typography variant="body2" component="p">
+                <br /><br />
+                <Typography variant="body2" component="p" style={{ fontWeight: 'bold' }}>
                     HP: {opponentPokemon.base.HP} <br />
                         Attack: {opponentPokemon.base.Attack} <br />
                         Defense: {opponentPokemon.base.Defense} <br />
                         Speed: {opponentPokemon.base.Speed} <br />
-                       <br />
                 </Typography>
                 </CardContent>
             </Card>
-            <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;
             {winner && (
-                <Card className={classes.card}>
-                    <CardContent>
+                <Card className={classes.card} >
+                  <Typography className={classes.wintitle} color="textSecondary" gutterBottom>
+                    Winner
+                  </Typography>
+                  <CardContent>
                     <Typography variant="h5" component="h2">
-                      {winner !== null ? `Winner: ${winner.name.english}` : 'No winner yet'}
+                      {winner.name.english}
                     </Typography>
-                    {winner !== 'tie' && (
-                        <div>
-                        <center><img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${winner.id}.png`} alt={winner.name.english} /></center>
-                        <Typography variant="body2" component="p">
-                            Total Stats: {calculateTotalStats(winner)}
-                        </Typography>
-                        </div>
-                    )}
-                    </CardContent>
+                    <center><img src={winnerPictureUrl} alt={winner.name.english} /></center>
+                    <Typography className={classes.pos} color="textSecondary">
+                      {winner.type.join(', ')}
+                    </Typography>
+                    <Typography className={styles.winStats} variant="body2" component="p" style={{fontWeight: "bold"}}>
+                      HP: {winner.base.HP} <br />
+                      Attack: {winner.base.Attack} <br />
+                      Defense: {winner.base.Defense} <br />
+                      Speed: {winner.base.Speed} <br />
+                    </Typography>
+                  </CardContent>
                 </Card>
-                )}
-                <br />
-                <Button variant="contained" color="primary" onClick={handleFight} className={styles.fightButton}>Fight!</Button>
-                <Button
-                    variant="contained"
-                    color="secondary"
-                    onClick={() =>
-                      handleSave({
-                        playerPokemon: playerPokemon.name.english,
-                        opponentPokemon: opponentPokemon.name.english,
-                        winner: winner.name.english,
-                        date: new Date().toLocaleString(),
-                      })
-                    }
-                  >
-                    Save Game
-                  </Button>
-
+              )}
+            <br /> 
         </div>)}
+        <div className={styles.buttonContainer}>
+          <Button variant="contained" color="primary" onClick={handleFight} className={styles.fightButton}>Fight!</Button>
+          &nbsp;
+          <Button variant="contained" color="secondary" className={styles.saveButton} onClick={() => handleSave({
+              playerPokemon: playerPokemon.name.english,
+              opponentPokemon: opponentPokemon.name.english,
+              winner: winner?.name?.english,
+              date: new Date().toLocaleString(),
+          })}>
+            Save Game
+          </Button>
+        </div>
+        <br />
         <Typography variant="h4">Pokemon List</Typography>
             <Typography variant="h6" className={styles.selectText}>
                 Choose your Pokemon:
