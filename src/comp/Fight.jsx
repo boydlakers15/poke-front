@@ -175,10 +175,7 @@ const useStyles = makeStyles({
     boxShadow: '0px 3px 10px rgba(0, 0, 0, 0.2)',
     textAlign: 'center',
     margin: '20px auto',
-    backgroundImage: "url('https://i.pinimg.com/originals/5d/2b/87/5d2b8754ace6e6311316c6a2950ebd8b.png')",
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
+    
   },
   title: {
     fontSize: 20,
@@ -378,15 +375,10 @@ const Pokefight = () => {
   
   return (
     <div className={styles.container}>
-      <div>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Pok%C3%A9mon_TCG_Online_Logo.png" alt="Pokemon TCG Online Logo" className="logo" />
-      </div>
+      
       <Leaderboard/>
       <div>
       <br />
-      <Box  display="flex" alignItems="center">
-          <img src="https://server.emulator.games/images/gameboy-color/pokemon-blue-version-ua.jpg" alt="Pokemon Blue Version" width="350" height="350" />
-      </Box>
     </div>
       {playerPokemon && opponentPokemon && (
         <div className={styles.pokemonContainer}>
