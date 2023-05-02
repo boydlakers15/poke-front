@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-import './Home.css';
+import './home.css';
 
 export default function Home() {
   const [show, setShow] = useState(false);
     return (
     <nav className="nav">
       <p className="section">
-          <center><img src="https://server.emulator.games/images/gameboy-color/pokemon-blue-version-ua.jpg" alt="Pokemon Blue Version" width="450" height="450" /></center>
+      <div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Pok%C3%A9mon_TCG_Online_Logo.png" alt="Pokemon TCG Online Logo" className="logo" />
+      </div>
+          <center> <img src="https://server.emulator.games/images/gameboy-color/pokemon-blue-version-ua.jpg" alt="Pokemon Blue Version" width="350" height="350" /></center>
         <br/></p>
       <p>(Pokémon
         Gotta catch 'em all) It's you and me

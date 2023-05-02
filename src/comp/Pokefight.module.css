@@ -5,8 +5,6 @@
     justify-content: center;
     
   }
-
-  
   
   .header {
     display: flex;
@@ -59,12 +57,17 @@
     width: 50px;
     height: 50px;
     margin-right: 16px;
+    
   }
   
   .selectName {
     font-size: 24px;
   }
   
+  .pokemonContainer {
+    display: flex;
+    justify-content: center;
+  }
   
   .pokemon {
     display: flex;
@@ -79,6 +82,7 @@
     width: 100%;
     max-width: 150px;
     height: auto;
+    
   }
   
   .pokemonName {
@@ -97,6 +101,7 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
+    
   }
   
   .pokemonCard:hover {
@@ -119,6 +124,88 @@
     width: 100px;
     margin-bottom: 8px;
   }
+  .cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    }
+    
+    .cardTitle {
+    display: flex;
+    align-items: center;
+    }
+    
+    .pokemonLogo {
+    height: 30px;
+    margin-right: 10px;
+    }
+    
+    .cardId {
+    font-size: 18px;
+    font-weight: bold;
+    }
+    
+    .cardBody {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    }
+    
+    .pokemonImg {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 10px;
+    }
+    
+    .pokemonType {
+    font-size: 18px;
+    margin-bottom: 10px;
+    }
+    
+    .stats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+    }
+    
+    .stat {
+    width: 50%;
+    margin-bottom: 5px;
+    }
+    
+    .statLabel {
+    font-weight: bold;
+    margin-right: 5px;
+    }
+
+    .buttonContainer {
+      display: flex;
+      justify-content: center;
+     
+    }
+
+    .fightButton {
+      height: 50px;
+     
+    }
+    .saveButton {
+      height: 50px;
+    }
+    .winnerCard {
+      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiiZutl7UYHZ4i5AgZ27ACB5z6IGs_AuABzdpJpBf5U1MO3bgwq5A6EnJ2BYpQZKVfQy4&usqp=CAU');
+      background-size: cover;
+      border-radius: 5px;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      text-align: center;
+    }
+  
+    .winStats {
+      padding-top: 47px;
+    }
   @media (max-width: 768px) {
     .title {
       font-size: 24px;
