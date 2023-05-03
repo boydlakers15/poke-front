@@ -5,12 +5,23 @@ function Leaderboard() {
   const [games, setGames] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/save')
-      .then(response => response.json())
-      .then(data => setGames(data))
+    axios.get('http://localhost:4000/leaderboard')
+      .then(response => setGames(response.data))
       .catch(error => console.log(error));
   }, []);
 
+  const handleSave = () => {
+    const gameData = {
+      playerPokemon: 'Pikachu',
+      opponentPokemon: 'Charizard',
+      winner: 'player',
+      date: Date.now()
+    };
+
+    axios.post('http://localhost:4000/save', gameData)
+      .then(response => console.log(response.data))
+      .catch(error => console.log(error));
+  };
 
   return (
     <div>
@@ -41,6 +52,7 @@ function Leaderboard() {
           ))}
         </tbody>
       </table>
+      <button onClick={handleSave}>Save Game</button>
     </div>
   );
 }

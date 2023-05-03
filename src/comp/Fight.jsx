@@ -165,7 +165,7 @@ import {Box, List, ListItem, ListItemText ,Button, Card, CardContent, Grid, Typo
 import { makeStyles } from '@material-ui/core/styles';
 import styles from './Pokefight.module.css';
 import Leaderboard from './leaderboard';
-
+import ReactPaginate from 'react-js-pagination';
 
 const useStyles = makeStyles({
   card: {
@@ -236,14 +236,18 @@ const Pokefight = () => {
   const [winner, setWinner] = useState(null);
   const [pictureUrl, setPictureUrl] = useState('');
   const [winnerPictureUrl, setWinnerPictureUrl] = useState('');
-
+  const [searchTerm, setSearchTerm] = useState("");
+  const [activePage, setActivePage] = useState(1);
+  const itemsPerPage = 30;
+  
 
   useEffect(() => {
-    fetch('http://localhost:3000/pokemon')
+    fetch('http://localhost:4000/pokemon')
       .then(response => response.json())
-      .then(data => setPokemonList(data))
-      
+      .then(data => setPokemonList(data.map((pokemon, index) => ({ ...pokemon, id: index + 1 }))))
+      .catch(error => console.log(error))
   }, []);
+  
 
   useEffect(() => {
     if (playerPokemon) {
@@ -269,39 +273,6 @@ const Pokefight = () => {
     setWinner(null);
   }
 
-  // const calculateTotalStats = (pokemon, isWinner) => {
-  //   let totalStats = 0;
-  //   for (let stat in pokemon.base) {
-  //     if (isWinner) {
-  //       if (stat === 'HP') {
-  //         totalStats += pokemon.base[stat] * 2;
-  //       } else {
-  //         totalStats += pokemon.base[stat];
-  //       }
-  //     } else {
-  //       totalStats += pokemon.base[stat];
-  //     }
-  //   }
-  //   return totalStats;
-  // }
-  
-
-  // const saveLeaderboard = (game) => {
-  //   fetch('/leaderboard', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify(game),
-  //   })
-  //     .then(response => response.json())
-  //     .then(data => {
-  //       console.log(data);
-  //       setLeaderboard(data);
-  //     })
-      
-  // };
-
   const handleSave = (game) => {
     saveGame(game);
    
@@ -313,7 +284,7 @@ const Pokefight = () => {
       return;
     }
   
-    fetch('http://localhost:3000/save', {
+    fetch('http://localhost:4000/save', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -364,6 +335,11 @@ const Pokefight = () => {
     }
     return totalStats;
   }
+
+  const handlePageChange = (pageNumber) => {
+    setActivePage(pageNumber);
+  }
+  
   
   const calculateWinnerTotalStats = () => {
     if (winner === null || winner === 'tie') {
@@ -373,6 +349,11 @@ const Pokefight = () => {
     }
   }
   
+  
+  const filteredList = pokemonList.filter(pokemon => pokemon.name.english.toLowerCase().includes(searchTerm.toLowerCase()));
+  const currentItems = filteredList.slice((activePage - 1) * itemsPerPage, activePage * itemsPerPage);
+
+
   return (
     <div className={styles.container}>
       
@@ -429,7 +410,7 @@ const Pokefight = () => {
             </Card>
             &nbsp;&nbsp;&nbsp;&nbsp;
             {winner && (
-                <Card className={classes.card} >
+                <Card className={classes.card} style={{backgroundImage: "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMZt76yPdP_8MyBFnE37YQx7UjO0peaupg1hACOOdTvSZdmVaCQRKuG-vM7pUoC4IBI78&usqp=CAU')", backgroundSize: "cover"}}>
                   <Typography className={classes.wintitle} color="textSecondary" gutterBottom>
                     Winner
                   </Typography>
@@ -465,12 +446,15 @@ const Pokefight = () => {
           </Button>
         </div>
         <br />
+        <div>
+          <input type="text" placeholder="Search Pokemon" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+        </div>
         <Typography variant="h4">Pokemon List</Typography>
             <Typography variant="h6" className={styles.selectText}>
                 Choose your Pokemon:
             </Typography>
             <Grid container spacing={4} className={styles.selectContainer}>
-              {pokemonList.map(pokemon => (
+              {currentItems.map(pokemon => (
                 <Grid item key={pokemon.id} xs={12} sm={6} md={4} lg={3}>
                   <Button variant="outlined" onClick={() => handleSelectPokemon(pokemon)} className={styles.selectButton}>
                     <div className={styles.selectPokemon}>
@@ -481,6 +465,17 @@ const Pokefight = () => {
                 </Grid>
               ))}
             </Grid>
+            <ReactPaginate
+              activePage={activePage}
+              itemsCountPerPage={itemsPerPage}
+              totalItemsCount={filteredList.length}
+              pageRangeDisplayed={5}
+              onChange={handlePageChange}
+              innerClass={styles.pagination}
+              itemClass={styles.pageItem}
+              linkClass={styles.pageLink}
+              activeLinkClass={styles.activePageLink}
+            />
 
     </div>
 );
