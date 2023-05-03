@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import styles from './PokemonList.module.css';
 import "../App.css";
 import ReactPaginate from 'react-js-pagination';
-import axios from 'axios';
 
 function PokemonList() {
   const [pokemonList, setPokemonList] = useState([]);
@@ -11,11 +10,10 @@ function PokemonList() {
   const itemsPerPage = 30;
 
   useEffect(() => {
-    const getPokemonList = async () => {
-      const response = await axios.get('https://pokemon-fightgrp3.herokuapp.com/pokemon');
-      setPokemonList(response.data);
-    };
-    getPokemonList();
+    fetch('http://localhost:3000/pokemon')
+      .then(response => response.json())
+      .then(data => setPokemonList(data))
+      .catch(error => console.log(error))
   }, []);
 
   const handlePageChange = (pageNumber) => {
