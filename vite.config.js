@@ -6,13 +6,17 @@
 //   plugins: [react()],
 // })
 
-import reactRefresh from '@vitejs/plugin-react-refresh'
+import react from "@vitejs/plugin-react";
 
 export default {
-  plugins: [reactRefresh()],
+  plugins: [react()],
+  resolve: {
+    extensions: [".js", ".jsx"],
+  },
   build: {
     rollupOptions: {
       external: ['react', 'react-dom', 'react-js-pagination']
     }
   }
-}
+};
+
