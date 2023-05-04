@@ -24,9 +24,7 @@ function App() {
           <li>
             <Link to="/game/leaderboard">Leaderboard</Link>
           </li>
-          <li>
-            <Link to="/savedGames">Saved Games</Link>
-          </li>
+          
         </ul>
       </nav>
       <Routes>
