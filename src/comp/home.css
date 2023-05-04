@@ -18,7 +18,7 @@ img {
   position: absolute;
   top: 10px;
   left: 10px;
-  height: 90px;
+  height: 50px; /* adjust the height to your preference */
   width: auto;
 }
 
@@ -70,8 +70,8 @@ img {
 
   @media screen and (max-width: 650px) {
     .logo {
-      top: 5px; /* adjust the position of the logo */
+      height: 30px; /* adjust the height to your preference */
+      top: 5px;
       left: 5px;
-      height: 30px; /* reduce the height of the logo even further */
     }
   }
