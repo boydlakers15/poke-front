@@ -65,4 +65,13 @@ img {
       display: block;
       
     }
+   
+  }
+
+  @media screen and (max-width: 650px) {
+    .logo {
+      top: 5px; /* adjust the position of the logo */
+      left: 5px;
+      height: 30px; /* reduce the height of the logo even further */
+    }
   }
