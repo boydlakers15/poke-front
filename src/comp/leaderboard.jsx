@@ -5,23 +5,28 @@ function Leaderboard() {
   const [games, setGames] = useState([]);
 
   useEffect(() => {
-    axios.get('https://pokemon-backend.herokuapp.com/leaderboard')
+    axios.get('http://localhost:4000/leaderboard')
       .then(response => setGames(response.data))
       .catch(error => console.log(error));
   }, []);
 
   const handleSave = () => {
-    const gameData = {
-      playerPokemon: 'Pikachu',
-      opponentPokemon: 'Charizard',
-      winner: 'player',
-      date: Date.now()
-    };
-
-    axios.post('https://pokemon-backend.herokuapp.com/save', gameData)
-      .then(response => console.log(response.data))
-      .catch(error => console.log(error));
+  const gameData = {
+    playerPokemon: 'Pikachu',
+    opponentPokemon: 'Charizard',
+    winner: 'player',
+    date: new Date().toISOString()
   };
+
+  axios.post('https://localhost:4000/save', gameData, {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+    .then(response => console.log(response.data))
+    .catch(error => console.log(error));
+};
+
 
   return (
     <div>
