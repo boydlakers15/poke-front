@@ -5,7 +5,7 @@ function Leaderboard() {
   const [games, setGames] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:4000/leaderboard')
+    axios.get('https://pokemon-backend.herokuapp.com/leaderboard')
       .then(response => setGames(response.data))
       .catch(error => console.log(error));
   }, []);
@@ -18,7 +18,7 @@ function Leaderboard() {
       date: Date.now()
     };
 
-    axios.post('http://localhost:4000/save', gameData)
+    axios.post('https://pokemon-backend.herokuapp.com/save', gameData)
       .then(response => console.log(response.data))
       .catch(error => console.log(error));
   };

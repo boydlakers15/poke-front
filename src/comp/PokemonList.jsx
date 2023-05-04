@@ -10,7 +10,7 @@ function PokemonList() {
   const itemsPerPage = 30;
 
   useEffect(() => {
-    fetch('http://localhost:3000/pokemon')
+    fetch('https://pokemon-backend.herokuapp.com/pokemon')
       .then(response => response.json())
       .then(data => setPokemonList(data))
       .catch(error => console.log(error))

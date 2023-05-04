@@ -242,7 +242,7 @@ const Pokefight = () => {
   
 
   useEffect(() => {
-    fetch('http://localhost:4000/pokemon')
+    fetch('https://pokemon-backend.herokuapp.com/pokemon')
       .then(response => response.json())
       .then(data => setPokemonList(data.map((pokemon, index) => ({ ...pokemon, id: index + 1 }))))
       .catch(error => console.log(error))
@@ -284,7 +284,7 @@ const Pokefight = () => {
       return;
     }
   
-    fetch('http://localhost:4000/save', {
+    fetch('https://pokemon-backend.herokuapp.com/save', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
