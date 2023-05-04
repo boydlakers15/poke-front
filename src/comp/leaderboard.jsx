@@ -10,18 +10,6 @@ function Leaderboard() {
       .catch(error => console.log(error));
   }, []);
 
-  const handleSave = () => {
-    const gameData = {
-      playerPokemon: 'Pikachu',
-      opponentPokemon: 'Charizard',
-      winner: 'player',
-      date: Date.now()
-    };
-
-    axios.post('https://pokemon-backend.herokuapp.com/save', gameData)
-      .then(response => console.log(response.data))
-      .catch(error => console.log(error));
-  };
 
   return (
     <div>
@@ -52,7 +40,7 @@ function Leaderboard() {
           ))}
         </tbody>
       </table>
-      <button onClick={handleSave}>Save Game</button>
+     
     </div>
   );
 }
