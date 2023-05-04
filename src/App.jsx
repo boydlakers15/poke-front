@@ -5,7 +5,7 @@ import PokemonInfo from './comp/PokemonInfo';
 import Fight from './comp/Fight';
 import Home from './comp/Home';
 import Leaderboard from './comp/leaderboard';
-
+import SavedGames from './comp/SavedGames';
 
 function App() {
   return (
@@ -23,19 +23,20 @@ function App() {
           </li>
           <li>
             <Link to="/game/leaderboard">Leaderboard</Link>
-
+          </li>
+          <li>
+            <Link to="/savedGames">Saved Games</Link>
           </li>
         </ul>
       </nav>
       <Routes>
-        
-          <Route path="/pokemon/:id/:info" element={<PokemonInfo />} />
-          <Route path="/pokemon/:id" element={<PokemonDetails />} />
-          <Route path="/" element={<Home />} />
-          <Route path="/pokemonList" element={<PokemonList />} />
-          <Route path="/fight" element={<Fight />} />
-          <Route path="/game/leaderboard" element={<Leaderboard />} />
-       
+        <Route path="/pokemon/:id/:info" element={<PokemonInfo />} />
+        <Route path="/pokemon/:id" element={<PokemonDetails />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/pokemonList" element={<PokemonList />} />
+        <Route path="/fight" element={<Fight />} />
+        <Route path="/game/leaderboard" element={<Leaderboard />} />
+        <Route path="/savedGames" element={<SavedGames />} />
       </Routes>
     </Router>
   );
