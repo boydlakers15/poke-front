@@ -43,7 +43,7 @@ function PokemonList() {
       <ul>
         {currentItems.map(pokemon => (
           <li key={pokemon.id}>
-            <a href={`https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/pokedex/${pokemon.id}.json`} className={styles.link}>
+            <a href={`https://pokemon-backend.herokuapp.com/pokemon/${pokemon.id}`} className={styles.link}>
               <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`} alt={pokemon.name.english} className={styles.image} />
               <div className={styles.name}>{pokemon.name.english}</div>
             </a>
