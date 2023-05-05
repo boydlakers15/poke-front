@@ -1,0 +1,94 @@
+.img {
+  display: block;
+  margin-right: 30px;
+ 
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+
+}
+
+p {
+  color: white;
+  text-align: center;
+  margin-top: 350px;
+}
+
+.logo {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  height: 180px;
+  width: 180px;
+  
+}
+.game-box {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  display: inline-block;
+  padding: 20px;
+  background-image: url("https://server.emulator.games/images/gameboy-color/pokemon-blue-version-ua.jpg");
+  background-size: cover;
+  height: 300px;
+  width: 300px;
+}
+
+
+.game-box img {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+  .section {
+    margin-left: 0;
+    padding-top: 50px;
+  }
+  .logo {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  main {
+    margin: calc(var(--header-height) + 1rem) 0 0 0;
+    padding: 0 1rem 0 calc(var(--nav-width) + 2rem);
+  }
+
+  .header {
+    height: calc(var(--header-height) + 1rem);
+    padding-left: calc(var(--nav-width) + 2rem);
+  }
+
+  .sidebar {
+    left: 0;
+    padding: 1rem 0 0 0;
+    cursor: context-menu;
+  }
+
+  .show {
+    width: calc(var(--header-height) + 156px);
+  }
+
+  .space-toggle {
+    padding-left: calc(var(--nav-width) + 188px);
+  }
+
+  .img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+}
