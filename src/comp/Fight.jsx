@@ -1,165 +1,3 @@
-// import React, { useState, useEffect } from 'react';
-// import styles from './Pokefight.module.css';
-// import Leaderboard from "./leaderboard";
-// import fightStyles from "./styles.module.css";
-
-
-
-// function Pokefight() {
-//   const [pokemonList, setPokemonList] = useState([]);
-//   const [playerPokemon, setPlayerPokemon] = useState(null);
-//   const [opponentPokemon, setOpponentPokemon] = useState(null);
-//   const [winner, setWinner] = useState(null);
-//   const [pictureUrl, setPictureUrl] = useState('');
-
-//   useEffect(() => {
-//     fetch('https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/pokedex.json')
-//       .then(response => response.json())
-//       .then(data => setPokemonList(data))
-//       .catch(error => console.log(error))
-//   }, []);
-
-//   useEffect(() => {
-//     if (playerPokemon) {
-//       fetch(`https://pokeapi.co/api/v2/pokemon/${playerPokemon.name.english.toLowerCase()}`)
-//         .then(response => response.json())
-//         .then(data => setPictureUrl(data.sprites.front_default))
-//         .catch(error => console.log(error))
-//     }
-//   }, [playerPokemon]);
-
-//   const handleSelectPokemon = (pokemon) => {
-//     setPlayerPokemon(pokemon);
-//     setOpponentPokemon(pokemonList[Math.floor(Math.random() * pokemonList.length)]);
-//     setWinner(null);
-//   }
-
-//   const calculateTotalStats = (pokemon) => {
-//     let totalStats = 0;
-//     for (let stat in pokemon.base) {
-//       totalStats += pokemon.base[stat];
-//     }
-//     return totalStats;
-//   }
-
-//   const handleFight = () => {
-//     const playerStats = calculateTotalStats(playerPokemon);
-//     const opponentStats = calculateTotalStats(opponentPokemon);
-//     if (playerStats > opponentStats) {
-//       setWinner(playerPokemon);
-//     } else if (opponentStats > playerStats) {
-//       setWinner(opponentPokemon);
-//     } else {
-//       setWinner('tie');
-//     }
-//   }
-
-//   return (
-//       <div className={styles.container}>
-//         <center>
-//           <div className="pokemon-image img" mr={1}>
-//             <img
-//               src="https://server.emulator.games/images/gameboy-color/pokemon-blue-version-ua.jpg"
-//               alt="Pokemon Blue Version"
-//               width="150"
-//               height="150"
-//             />
-//           </div>
-//         </center>
-//         <h1 className={styles.title}>Pokefight</h1>
-        
-//         <button onClick={handleFight} className={styles.fightButton}>
-//           Fight!
-//         </button>
-//         {playerPokemon && opponentPokemon && (
-//           <div className={styles.pokemonContainer}>
-//             <div className={`${styles.card} card water`}>
-//               <div className={`${styles.title} cursor`}>Your Pokemon</div>
-//               <div className={styles.pokemonName}>
-//                 {playerPokemon.name.english}
-//               </div>
-//               <img
-//                 src={pictureUrl}
-//                 alt={playerPokemon.name.english}
-//                 className="ripple"
-//               />
-//               <div className={styles.pokemonType}>
-//                 {playerPokemon.type.join(", ")}
-//               </div>
-//               <div className={styles.pokemonStats}>
-//                 <div>HP: {playerPokemon.base.HP}</div>
-//                 <div>Attack: {playerPokemon.base.Attack}</div>
-//                 <div>Defense: {playerPokemon.base.Defense}</div>
-//                 <div>Speed: {playerPokemon.base.Speed}</div>
-//                 <div>
-//                   Total Stats: {calculateTotalStats(playerPokemon)}
-//                 </div>
-//               </div>
-//             </div>
-    
-//             <div className={`${styles.card} card`}>
-//               <div className={styles.title}>Opponent's Pokemon</div>
-//               <div className={styles.pokemonName}>
-//                 {opponentPokemon.name.english}
-//               </div>
-//               <center>
-//                 <img
-//                   src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${opponentPokemon.id}.png`}
-//                   alt={opponentPokemon.name.english}
-//                   className="ripple"
-//                 />
-//               </center>
-//               <div className={styles.pokemonType}>
-//                 {opponentPokemon.type.join(", ")}
-//               </div>
-//               <div className={styles.pokemonStats}>
-//                 <div>HP: {opponentPokemon.base.HP}</div>
-//                 <div>Attack: {opponentPokemon.base.Attack}</div>
-//                 <div>Defense: {opponentPokemon.base.Defense}</div>
-//                 <div>Speed: {opponentPokemon.base.Speed}</div>
-//                 <div>
-//                   Total Stats: {calculateTotalStats(opponentPokemon)}
-//                 </div>
-//               </div>
-//             </div>
-    
-//             {winner && (
-//               <div className={`${styles.card} card winner`}>
-//                 <div className={styles.title}>
-//                   Winner: {winner === "tie" ? "Tie" : winner.name.english}
-//                 </div>
-//                 <center>
-//                   <img
-//                     src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${winner.id}.png`}
-//                     alt={winner.name.english}
-//                   />
-//                 </center>
-//               </div>
-//             )}
-//           </div>
-//         )}
-    
-//     <h6 className={styles.selectText}>Choose your Pokemon:</h6>
-//       <div className={`${fightStyles.selectContainer} select-container`}>
-//         {pokemonList.map((pokemon) => (
-//           <div key={pokemon.id} className={`${styles.pokemonButton} pokemon-button`}>
-//             <button onClick={() => handleSelectPokemon(pokemon)}>
-//               <img
-//                 src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`}
-//                 alt={pokemon.name.english}
-//                 className={styles.image}
-//               />
-//               <div className={styles.name}>{pokemon.name.english}</div>
-//             </button>
-//           </div>
-//         ))}
-//       </div>
-
-// </div>
-// );
-// }
-
-//export default Pokefight;
 import React, { useState, useEffect } from 'react';
 import {Box, List, ListItem, ListItemText ,Button, Card, CardContent, Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
@@ -175,7 +13,7 @@ const useStyles = makeStyles({
     boxShadow: '0px 3px 10px rgba(0, 0, 0, 0.2)',
     textAlign: 'center',
     margin: '20px auto',
-    
+    height: 490,
   },
   title: {
     fontSize: 20,
@@ -238,7 +76,7 @@ const Pokefight = () => {
   const [winnerPictureUrl, setWinnerPictureUrl] = useState('');
   const [searchTerm, setSearchTerm] = useState("");
   const [activePage, setActivePage] = useState(1);
-  const itemsPerPage = 30;
+  const itemsPerPage = 28;
   
 
   useEffect(() => {

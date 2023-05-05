@@ -1,12 +1,20 @@
 .img {
   display: block;
   margin-right: 30px;
+ 
 }
 
 img {
   max-width: 100%;
   height: auto;
   display: block;
+  
+}
+
+p {
+  color: white;
+  text-align: center;
+  margin-top: 350px;
 }
 
 .logo {
@@ -15,6 +23,26 @@ img {
   left: 5px;
   height: 180px;
   width: 180px;
+  
+}
+.game-box {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  display: inline-block;
+  padding: 20px;
+  background-image: url("https://server.emulator.games/images/gameboy-color/pokemon-blue-version-ua.jpg");
+  background-size: cover;
+  height: 300px;
+  width: 300px;
+}
+
+
+.game-box img {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
 }
 
 @media screen and (max-width: 650px) {

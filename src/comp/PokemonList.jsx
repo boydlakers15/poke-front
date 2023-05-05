@@ -7,7 +7,7 @@ function PokemonList() {
   const [pokemonList, setPokemonList] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [activePage, setActivePage] = useState(1);
-  const itemsPerPage = 30;
+  const itemsPerPage = 28;
 
   useEffect(() => {
     fetch('https://pokemon-backend.herokuapp.com/pokemon')
@@ -34,11 +34,8 @@ function PokemonList() {
       <div>
         <img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Pok%C3%A9mon_TCG_Online_Logo.png" alt="Pokemon TCG Online Logo" className="logo" />
       </div>
-      <center>
-        <div className="pokemon-image img" mr={1}>
-          <img src="https://server.emulator.games/images/gameboy-color/pokemon-blue-version-ua.jpg" alt="Pokemon Blue Version" width="150" height="150" />
-        </div>
-      </center> 
+      <div className="game-box">
+        </div> 
       <h1>Pokemon List</h1>
       <div className={styles.searchBar}>
         <input type="text" placeholder="Search Pokemon" value={searchTerm} onChange={handleSearch} />

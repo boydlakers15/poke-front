@@ -232,4 +232,70 @@
       font-size: 12px;
       margin-right: 4px;
     }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    
+    .selectContainer {
+      margin-top: 16px;
+    }
+    
+    .selectButton {
+      width: 100%;
+      margin-bottom: 8px;
+    }
+    
+    .selectPokemon {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .selectImage {
+      height: 70px;
+      width: 60px;
+      margin-right: 0;
+    }
+    
+    .selectName {
+      font-size: 16px;
+      margin-top: 8px;
+      text-align: center;
+    }
+    
+    .pokemonContainer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .pokemon {
+      margin: 8px;
+      padding: 8px;
+    }
+    
+    .pokemonImage {
+      height: 120px;
+      width: 120px;
+      margin-bottom: 8px;
+    }
+    
+    .pokemonName {
+      font-size: 16px;
+      text-align: center;
+    }
+    
+    .pokemonType {
+      font-size: 12px;
+      margin-right: 4px;
+    }
   }
