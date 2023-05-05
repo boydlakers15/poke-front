@@ -10,7 +10,7 @@ export default function Home() {
       </div>
       <center>
         <div className="game-box">
-        <p >(Pokémon
+        <p style={{color: "black"}}>(Pokémon
         Gotta catch 'em all) It's you and me
         I know it's my destiny (Pokémon)
         Oh, you're my best friend
