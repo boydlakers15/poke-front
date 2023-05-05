@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import {Box, List, ListItem, ListItemText ,Button, Card, CardContent, Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import styles from './Pokefight.module.css';
+import styles from '../styles/Pokefight.module.css';
 import Leaderboard from './leaderboard';
 import ReactPaginate from 'react-js-pagination';
 
 const useStyles = makeStyles({
   card: {
     width: 350,
-    backgroundColor: '#f2f2f2',
+    
     borderRadius: 10,
     boxShadow: '0px 3px 10px rgba(0, 0, 0, 0.2)',
     textAlign: 'center',

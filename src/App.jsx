@@ -17,7 +17,7 @@ function App() {
             <Link to="/"> <FcHome /> Home</Link>
           </li>
           <li>
-          <Link to="/fight" style={{ display: "flex", alignItems: "center" }}>
+          <Link to="/PokemonList" style={{ display: "flex", alignItems: "center" }}>
               <img src='https://cdn-icons-png.flaticon.com/512/188/188987.png' style={{ height: "20px", width: "20px", paddingRight: "5px" }}/>
               <span>Pokemon List</span>
             </Link>

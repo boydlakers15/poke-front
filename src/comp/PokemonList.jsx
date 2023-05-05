@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import styles from './PokemonList.module.css';
-import "../App.css";
+import styles from '../styles/PokemonList.module.css';
+import "../styles/App.css";
 import ReactPaginate from 'react-js-pagination';
 
 function PokemonList() {
