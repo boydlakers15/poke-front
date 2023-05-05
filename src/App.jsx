@@ -21,10 +21,6 @@ function App() {
           <li>
             <Link to="/fight">Fight</Link>
           </li>
-          <li>
-            <Link to="/game/leaderboard">Leaderboard</Link>
-          </li>
-          
         </ul>
       </nav>
       <Routes>
