@@ -6,6 +6,7 @@ import Fight from './comp/Fight';
 import Home from './comp/Home';
 import Leaderboard from './comp/leaderboard';
 import SavedGames from './comp/SavedGames';
+import { FcHome, FcList } from 'react-icons/fc';
 
 function App() {
   return (
@@ -13,13 +14,19 @@ function App() {
       <nav>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/"> <FcHome /> Home</Link>
           </li>
           <li>
-            <Link to="/pokemonList">Pokemon List</Link>
+          <Link to="/fight" style={{ display: "flex", alignItems: "center" }}>
+              <img src='https://cdn-icons-png.flaticon.com/512/188/188987.png' style={{ height: "20px", width: "20px", paddingRight: "5px" }}/>
+              <span>Pokemon List</span>
+            </Link>
           </li>
           <li>
-            <Link to="/fight">Fight</Link>
+            <Link to="/fight" style={{ display: "flex", alignItems: "center" }}>
+              <img src='https://cdn-icons-png.flaticon.com/512/1408/1408998.png' style={{ height: "20px", width: "20px", paddingRight: "5px" }}/>
+              <span>Fight</span>
+            </Link>
           </li>
         </ul>
       </nav>
