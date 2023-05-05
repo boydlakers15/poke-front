@@ -30,7 +30,7 @@ const useStyles = makeStyles({
     textTransform: 'uppercase',
     color: '#c80000',
     textShadow: '2px 2px #fff',
-    
+    paddingBottom: "20px",
   },
   wintitle: {
     fontSize: 20,
@@ -206,7 +206,6 @@ const Pokefight = () => {
                     Your Pokemon
                 </Typography>
                 <CardContent>
-                
                 <Typography variant="h5" component="h2">
                     {playerPokemon.name.english}
                 </Typography>
@@ -214,7 +213,7 @@ const Pokefight = () => {
                 <Typography className={classes.pos} color="textSecondary">
                     {playerPokemon.type.join(', ')}
                 </Typography>
-                <Typography variant="body2" component="p" style={{ paddingTop: '48px',  fontWeight: 'bold' }}>
+                <Typography variant="body2" component="p" style={{ color: "black", paddingTop: '48px',  fontWeight: 'bold' }}>
                     HP: {playerPokemon.base.HP} <br />
                     Attack: {playerPokemon.base.Attack} <br />
                     Defense: {playerPokemon.base.Defense} <br />
@@ -229,7 +228,6 @@ const Pokefight = () => {
                 <Typography  className={classes.opptitle} color="textSecondary" gutterBottom>
                     Opponent's Pokemon
                 </Typography>
-                <br />
                 <Typography variant="h5" component="h2">
                     {opponentPokemon.name.english}
                 </Typography>
@@ -237,8 +235,7 @@ const Pokefight = () => {
                 <Typography className={classes.pos} color="textSecondary">
                     {opponentPokemon.type.join(', ')}
                 </Typography>
-                <br /><br />
-                <Typography variant="body2" component="p" style={{ fontWeight: 'bold' }}>
+                <Typography variant="body2" component="p" style={{ color: "black",paddingTop: "48px",fontWeight: 'bold' }}>
                     HP: {opponentPokemon.base.HP} <br />
                         Attack: {opponentPokemon.base.Attack} <br />
                         Defense: {opponentPokemon.base.Defense} <br />
@@ -260,7 +257,7 @@ const Pokefight = () => {
                     <Typography className={classes.pos} color="textSecondary">
                       {winner.type.join(', ')}
                     </Typography>
-                    <Typography className={styles.winStats} variant="body2" component="p" style={{fontWeight: "bold"}}>
+                    <Typography className={styles.winStats} variant="body2" component="p" style={{color: "black",paddingTop: "48px",fontWeight: "bold"}}>
                       HP: {winner.base.HP} <br />
                       Attack: {winner.base.Attack} <br />
                       Defense: {winner.base.Defense} <br />
