@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './Leaderboard.module.css';
 
 function Leaderboard() {
   const [games, setGames] = useState([]);
@@ -10,13 +11,14 @@ function Leaderboard() {
       .catch(error => console.log(error));
   }, []);
 
-
   return (
-    <div>
+    <div className="leaderboard-container">
       <div>
         <img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Pok%C3%A9mon_TCG_Online_Logo.png" alt="Pokemon TCG Online Logo" className="logo" />
       </div>
-      <center> <img src="https://server.emulator.games/images/gameboy-color/pokemon-blue-version-ua.jpg" alt="Pokemon Blue Version" width="350" height="350" /></center>
+      <center>
+        <img src="https://server.emulator.games/images/gameboy-color/pokemon-blue-version-ua.jpg" alt="Pokemon Blue Version" width="350" height="350" />
+      </center>
       <h1>Leaderboard</h1>
       <table>
         <thead>
@@ -24,7 +26,6 @@ function Leaderboard() {
             <th>Player Pokemon</th>
             <th>Opponent Pokemon</th>
             <th>Winner</th>
-            <th>Turns</th>
             <th>Date</th>
           </tr>
         </thead>
@@ -34,13 +35,11 @@ function Leaderboard() {
               <td>{game.playerPokemon}</td>
               <td>{game.opponentPokemon}</td>
               <td>{game.winner}</td>
-              <td>{game.turns}</td>
               <td>{new Date(game.createdAt).toLocaleDateString()}</td>
             </tr>
           ))}
         </tbody>
       </table>
-     
     </div>
   );
 }
