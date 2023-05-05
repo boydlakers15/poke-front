@@ -308,11 +308,15 @@ const Pokefight = () => {
               itemsCountPerPage={itemsPerPage}
               totalItemsCount={filteredList.length}
               pageRangeDisplayed={5}
-              onChange={handlePageChange}
+              onChange="page-item"
               innerClass={styles.pagination}
               itemClass={styles.pageItem}
-              linkClass={styles.pageLink}
+              linkClass="page-link"
               activeLinkClass={styles.activePageLink}
+              prevPageText="Previous"
+              nextPageText="Next"
+              firstPageText="First"
+              lastPageText="Last"
             />
 
     </div>
