@@ -3,7 +3,7 @@ body {
   --nav-width: 75px;
   background: linear-gradient(to right, #2779A9,#B8CFD9, #13164B) ;
   --first-color: #2779A9;
-  --first-color-alt: #13164B;
+  --first-color-alt: #193E70;
   --white-color: #B8CFD9;
   font-size: 16px;
 }
