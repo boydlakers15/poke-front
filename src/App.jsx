@@ -23,7 +23,7 @@ const LoginPage = (data) => {
   const handleLogin = async () => {
     try {
       const response = await axios.get(
-        ` https://pokemon-backend.herokuapp.com/users`
+        'https://pokemon-backend.herokuapp.com/users' 
       );
       console.log(response.data[0]);
       console.log(formState);
@@ -58,7 +58,7 @@ const LoginPage = (data) => {
   const handleSignup = async () => {
     try {
       const response = await axios.post(
-        " https://pokemon-backend.herokuapp.com/signup",
+        "https://pokemon-backend.herokuapp.com/signup",
         JSON.stringify({
           username: formState.username,
           password: formState.password,

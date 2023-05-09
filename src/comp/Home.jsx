@@ -2,13 +2,14 @@ import '../styles/home.css';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import LogoutPage from './LogoutPage';
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 export default function Home({ username }) {
   const [userInfo, setUserInfo] = useState({});
 
   useEffect(() => {
     async function getUserInfo() {
       try {
-        const response = await axios.get(`http://localhost:3005/users?username=${username}`);
+        const response = await axios.get(`https://pokemon-backend.herokuapp.com/users?username=${username}`);
         setUserInfo(response.data);
       } catch (error) {
         console.log(error);
