@@ -4,7 +4,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import styles from '../styles/Pokefight.module.css';
 import Leaderboard from './leaderboard';
 import ReactPaginate from 'react-js-pagination';
-
+import { FcHome, FcList } from 'react-icons/fc';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 const useStyles = makeStyles({
   card: {
     width: 350,
@@ -194,7 +195,19 @@ const Pokefight = () => {
 
   return (
     <div className={styles.container}>
-      
+      <nav>
+      <ul> 
+        <li>
+            <Link to="/home"> <FcHome /> Home</Link>
+        </li>
+        <li>
+        <Link to="/pokemonlist" style={{ display: "flex", alignItems: "center" }}>
+            <img src='https://cdn-icons-png.flaticon.com/512/188/188987.png' style={{ height: "20px", width: "20px", paddingRight: "5px" }}/>
+            <span>Pokemon List</span>
+          </Link>
+        </li>
+      </ul>
+      </nav>
       <Leaderboard/>
       <div>
       <br />

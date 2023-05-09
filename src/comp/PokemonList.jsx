@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import styles from '../styles/PokemonList.module.css';
 import "../styles/App.css";
 import ReactPaginate from 'react-js-pagination';
-
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { FcHome, FcList } from 'react-icons/fc';
 function PokemonList() {
   const [pokemonList, setPokemonList] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -31,6 +32,19 @@ function PokemonList() {
 
   return (
     <div className="centered-container">
+      <nav>
+      <ul>
+      <li>
+            <Link to="/home"> <FcHome /> Home</Link>
+        </li>
+        <li>
+          <Link to="/fight" style={{ display: "flex", alignItems: "center" }}>
+            <img src='https://cdn-icons-png.flaticon.com/512/1408/1408998.png' style={{ height: "20px", width: "20px", paddingRight: "5px" }}/>
+            <span>Fight</span>
+          </Link>
+        </li>
+      </ul>
+      </nav>
       <div>
         <img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Pok%C3%A9mon_TCG_Online_Logo.png" alt="Pokemon TCG Online Logo" className="logo" />
       </div>
