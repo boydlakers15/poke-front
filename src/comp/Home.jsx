@@ -10,7 +10,7 @@ export default function Home({ username }) {
     async function getUserInfo() {
       try {
         const response = await axios.get(`https://pokemon-backend.herokuapp.com/users?username=${username}`);
-        setUserInfo(response.data);
+        setUserInfo(response.data[0]); // assuming there's only one user with that username
       } catch (error) {
         console.log(error);
       }
@@ -19,7 +19,7 @@ export default function Home({ username }) {
     getUserInfo();
   }, [username]);
 
-     return (
+  return (
     <nav className="nav">
       <ul>
         <LogoutPage />
@@ -36,7 +36,7 @@ export default function Home({ username }) {
           </Link>
         </li>
       </ul>
-      <h1>Hello, {userInfo.username}!</h1>
+      <h1>Hello, {userInfo.firstName}!</h1>
       <div className="logo">
         <img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Pok%C3%A9mon_TCG_Online_Logo.png" alt="Pokemon TCG Online Logo" className="logo" />
       </div>
