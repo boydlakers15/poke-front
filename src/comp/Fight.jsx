@@ -123,7 +123,7 @@ const Pokefight = () => {
       return;
     }
   
-    fetch('https://pokemon-backend.herokuapp.com/save', {
+    fetch('http://localhost:3005/save', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
