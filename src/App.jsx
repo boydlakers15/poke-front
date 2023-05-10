@@ -112,7 +112,7 @@ function App() {
       {isLoggedIn ? (
         <>
           <Route path="/home" element={<Home />} />
-          <Route path="/pokemonList" element={<PokemonList />} />
+          <Route path="/PokemonList" element={<PokemonList />} />
           <Route path="/fight" element={<Fight />} />
           <Route path="/game/leaderboard" element={<Leaderboard />} />
           <Route path="/savedGames" element={<SavedGames />} />
