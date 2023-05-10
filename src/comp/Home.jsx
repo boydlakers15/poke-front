@@ -3,21 +3,22 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import LogoutPage from './LogoutPage';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-export default function Home({ username }) {
+
+export default function Home({ userId }) {
   const [userInfo, setUserInfo] = useState({});
 
   useEffect(() => {
     async function getUserInfo() {
       try {
-        const response = await axios.get(`https://pokemon-backend.herokuapp.com/users?username=${username}`);
-        setUserInfo(response.data[0]); // assuming there's only one user with that username
+        const response = await axios.get(`https://pokemon-backend.herokuapp.com/users/${userId}`);
+        setUserInfo(response.data);
       } catch (error) {
         console.log(error);
       }
     }
     
     getUserInfo();
-  }, [username]);
+  }, [userId]);
 
   return (
     <nav className="nav">
@@ -42,7 +43,6 @@ export default function Home({ username }) {
       </div>
       <center>
         <div className="game-box">
-          
           <p style={{ color: "black" }}>(Pokémon Gotta catch 'em all) It's you and me I know it's my destiny (Pokémon) Oh, you're my best friend In a world we must defend (Pokémon Gotta catch 'em all) A heart so true Our courage will pull us through You teach me and I'll teach you (Ooh, ooh) Pokémon! (Gotta catch 'em all) Gotta catch 'em all Yeah</p>
         </div>
       </center>
