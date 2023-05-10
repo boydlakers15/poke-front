@@ -4,13 +4,13 @@ import LogoutPage from './LogoutPage';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-export default function Home({ userId }) {
+export default function Home({ }) {
   const [userInfo, setUserInfo] = useState({});
 
   useEffect(() => {
     async function getUserInfo() {
       try {
-        const response = await axios.get(`https://pokemon-backend.herokuapp.com/users/${userId}`);
+        const response = await axios.get(`https://pokemon-backend.herokuapp.com/users/${_id}`);
         setUserInfo(response.data);
       } catch (error) {
         console.log(error);
@@ -18,7 +18,7 @@ export default function Home({ userId }) {
     }
     
     getUserInfo();
-  }, [userId]);
+  }, []);
 
   return (
     <nav className="nav">
