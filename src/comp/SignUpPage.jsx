@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
-const SignUpPage = ({ setIsLoggedIn, navigate }) => {
+const SignUpPage = ({ setIsLoggedIn }) => {
   const [formState, setFormState] = useState({
     firstName: '',
     lastName: '',
@@ -10,7 +11,7 @@ const SignUpPage = ({ setIsLoggedIn, navigate }) => {
     password: ''
   });
   const [error, setError] = useState(null);
-
+  const navigate = useNavigate();
   const handleSignup = async () => {
     try {
       const response = await axios.post(

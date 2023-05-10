@@ -11,11 +11,18 @@ function PokemonList() {
   const itemsPerPage = 28;
 
   useEffect(() => {
-    fetch('https://pokemon-backend.herokuapp.com/pokemon')
-      .then(response => response.json())
-      .then(data => setPokemonList(data))
-      .catch(error => console.log(error))
+    async function fetchData() {
+      try {
+        const response = await fetch('https://pokemon-backend.herokuapp.com/pokemon');
+        const data = await response.json();
+        setPokemonList(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchData();
   }, []);
+  
 
   const handlePageChange = (pageNumber) => {
     setActivePage(pageNumber);
