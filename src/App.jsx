@@ -7,6 +7,7 @@ import Home from './comp/Home';
 import LogoutPage from './comp/LogoutPage';
 import Leaderboard from './comp/leaderboard';
 import SavedGames from './comp/SavedGames';
+import SignUpPage from './comp/SignUpPage';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -55,31 +56,8 @@ const LoginPage = (data) => {
   };
   
   
-  const handleSignup = async () => {
-    try {
-      const response = await axios.post(
-        "https://pokemon-backend.herokuapp.com/signup",
-        JSON.stringify({
-          username: formState.username,
-          password: formState.password,
-        }),
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      // Set the isLoggedIn state to true
-      data.setIsLoggedIn(true);
-      navigate('/home');
-    } catch (error) {
-      console.log(error);
-      if (error.response && error.response.data) {
-        setError(error.response.data);
-      } else {
-        setError("Failed to create user");
-      }
-    }
+  const handleSignup = () => {
+    navigate('/signup');
   };
 
   const handleSubmit = (event) => {
@@ -130,6 +108,7 @@ function App() {
     <Routes>
       <Route path="/pokemon/:id/:info" element={<PokemonInfo />} />
       <Route path="/pokemon/:id" element={<PokemonDetails />} />
+      <Route path="/signup" element={<SignUpPage setIsLoggedIn={setIsLoggedIn} />} />
       {isLoggedIn ? (
         <>
           <Route path="/home" element={<Home />} />
