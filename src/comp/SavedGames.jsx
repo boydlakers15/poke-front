@@ -4,7 +4,7 @@ function SavedGames() {
   const [savedGames, setSavedGames] = useState([]);
 
   useEffect(() => {
-    fetch('https://pokemon-backend.herokuapp.com/save')
+    fetch('http://localhost:3005/save')
       .then(response => response.json())
       .then(data => setSavedGames(data))
       .catch(error => console.log(error));
