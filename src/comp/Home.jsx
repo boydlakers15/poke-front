@@ -11,7 +11,8 @@ export default function Home({ }) {
     async function getUserInfo() {
       try {
         const response = await axios.get(`https://pokemon-backend.herokuapp.com/users/${_id}`);
-        setUserInfo(response.data);
+        setUserInfo(response.data._id.firstName);
+        console.log(response.data._id.firstName);
       } catch (error) {
         console.log(error);
       }
